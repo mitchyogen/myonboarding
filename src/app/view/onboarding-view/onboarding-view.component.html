@@ -1,0 +1,109 @@
+<!-- <div class="gfi-form">
+	<div *ngFor="let form of gfiForm">
+		<div [ngSwitch]="form.type" class="section">
+			<label [attr.for]="form.label">{{form.label}}:</label>
+
+			<div *ngSwitchCase="'textbox'" class="inputs">
+			<mat-form-field class="example-full-width">
+			    <input matInput name="{{form.name}}" id="{{form.name}}" class="text-box" [(ngModel)]="form.value" placeholder="{{form.placeholder}}" />
+			 </mat-form-field>
+				<div class="errorMessage" *ngIf="!isValid && form.value == ''">{{form.label}} is required</div>
+			</div>
+
+			<div *ngSwitchCase="'dropdown'" class="inputs">
+				<mat-select id="{{form.name}}" class="select-box">
+			      <option *ngFor="let opt of form.optionList" value="opt.key">{{opt.value}}</option>
+			    </mat-select>
+			    <div class="errorMessage" *ngIf="!isValid && form.value == ''">{{form.label}} is required</div>
+			</div>
+
+			<div *ngSwitchCase="'radio'" class="inputs">
+				<div *ngFor="let opt of optionList" class="radio-box">
+					<input matInput type="radio" name="{{form.name}}" value="{{opt}}" />{{opt}}
+					<div class="errorMessage" *ngIf="!isValid && form.value == ''">{{form.label}} is required</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div class="button">
+		<button class="submit_btn" (click)="submitInfo()">SUBMIT</button>
+	</div>
+</div> -->
+
+<form class="gfi-form">
+  <table class="full-width" cellspacing="0">
+  <tr>
+    <td>
+    	<mat-form-field class="full-width">
+        	<input matInput placeholder="First Name" [formControl]="nameFormControl">
+        	<mat-error *ngIf="nameFormControl.hasError('name') && !nameFormControl.hasError('required')">
+		      Name should be between 1 - 50 characters
+		    </mat-error>
+		    <mat-error *ngIf="nameFormControl.hasError('required')">
+		      First Name is <strong>required</strong>
+		    </mat-error>
+    	</mat-form-field>
+    </td>
+    <td>
+	    <mat-form-field class="full-width">
+	      <input matInput placeholder="Last Name" [formControl]="nameFormControl">
+	      <mat-error *ngIf="nameFormControl.hasError('name') && !nameFormControl.hasError('required')">
+		      Last Name should be between 1 - 50 characters
+		  </mat-error>
+	      <mat-error *ngIf="nameFormControl.hasError('required')">
+	        Last Name is <strong>required</strong>
+	      </mat-error>
+	    </mat-form-field>
+    </td>
+  </tr>
+  </table>
+
+  <p>
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Address" [formControl]="requiredFormControl"></textarea>
+      <mat-error *ngIf="requiredFormControl.hasError('required')">
+        Address is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </p>
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Email" [formControl]="emailFormControl">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <!-- <mat-form-field class="full-width">
+    <input matInput placeholder="Date Of Birth" [formControl]="dobFormControl">
+    <mat-error *ngIf="dobFormControl.hasError('required')">
+      Date of birth is <strong>required</strong>
+    </mat-error>
+  </mat-form-field> -->
+
+  <mat-form-field class="full-width">
+	  <input matInput [matDatepicker]="picker" placeholder="Date of birth" [formControl]="dobFormControl">
+	  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+	  <mat-datepicker #picker></mat-datepicker>
+	  <mat-error *ngIf="dobFormControl.hasError('required')">
+	      Date of birth is <strong>required</strong>
+	  </mat-error>
+</mat-form-field>
+
+  <!-- <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="City">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput placeholder="State">
+    </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+      <input matInput #postalCode maxlength="5" placeholder="Postal Code" value="94043">
+      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+    </mat-form-field></td>
+  </tr></table> -->
+</form>
