@@ -30,11 +30,13 @@
 		<button class="submit_btn" (click)="submitInfo()">SUBMIT</button>
 	</div>
 </div> -->
-
+<div class="form-wrapper">
+<div class="gfi-header">Welcome To GFI Informatique</div>
 <form class="gfi-form">
-  <table class="full-width" cellspacing="0">
-  <tr>
-    <td>
+<strong>Personal Details</strong>
+<hr>
+  <div class="personal-info-container">
+  <div class="first-name">
     	<mat-form-field class="full-width">
         	<input matInput placeholder="First Name" [formControl]="nameFormControl">
         	<mat-error *ngIf="nameFormControl.hasError('name') && !nameFormControl.hasError('required')">
@@ -44,8 +46,8 @@
 		      First Name is <strong>required</strong>
 		    </mat-error>
     	</mat-form-field>
-    </td>
-    <td>
+</div>
+<div class="last-name">
 	    <mat-form-field class="full-width">
 	      <input matInput placeholder="Last Name" [formControl]="nameFormControl">
 	      <mat-error *ngIf="nameFormControl.hasError('name') && !nameFormControl.hasError('required')">
@@ -55,19 +57,29 @@
 	        Last Name is <strong>required</strong>
 	      </mat-error>
 	    </mat-form-field>
-    </td>
-  </tr>
-  </table>
+</div>
+</div>
 
-  <p>
+    <mat-form-field class="full-width">
+	  <input matInput [matDatepicker]="picker" placeholder="Date of birth" [formControl]="dobFormControl">
+	  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+	  <mat-datepicker #picker></mat-datepicker>
+	  <mat-error *ngIf="dobFormControl.hasError('required')">
+	      Date of birth is <strong>required</strong>
+	  </mat-error>
+</mat-form-field>
+
+  <!-- <p>
     <mat-form-field class="full-width">
       <textarea matInput placeholder="Address" [formControl]="requiredFormControl"></textarea>
       <mat-error *ngIf="requiredFormControl.hasError('required')">
         Address is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-  </p>
-
+  </p> -->
+  <br><br><br><br>
+<strong>Contact Details</strong>
+<hr>
   <mat-form-field class="full-width">
     <input matInput placeholder="Email" [formControl]="emailFormControl">
     <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -78,6 +90,118 @@
     </mat-error>
   </mat-form-field>
 
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Contact" [formControl]="contactFormControl">
+    <mat-error *ngIf="contactFormControl.hasError('contact') && !contactFormControl.hasError('required')">
+      Please enter your mobile no.
+    </mat-error>
+    <mat-error *ngIf="contactFormControl.hasError('required')">
+      Mobile No. is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+<br><br><br><br>
+  <strong>Citizenship Status</strong>
+  <hr>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="Nationality" [formControl]="nationalityFormControl">
+    <mat-error *ngIf="nationalityFormControl.hasError('nationality') && !nationalityFormControl.hasError('required')">
+      Please enter your nationality
+    </mat-error>
+    <mat-error *ngIf="nationalityFormControl.hasError('required')">
+      Nationality is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  
+
+   <!--  <input matRadioInput placeholder="Visa Status" [formControl]="visaStatusFormControl"> -->
+   <label><strong>Visa Status</strong></label><br><br>
+    <mat-radio-group>
+    <div class="radio-container">
+    			<div class="radio-button-container">
+    				<mat-radio-button value="Citizen">Citizen</mat-radio-button>
+    			</div>
+    		
+    			<div class="radio-button-container">
+	  				<mat-radio-button value="PR">PR</mat-radio-button>
+	  			</div>
+    		
+    	
+	    		<div class="radio-button-container">
+	    			<mat-radio-button value="EP">E Pass</mat-radio-button>
+    			</div>
+	    		<div class="radio-button-container">
+		  			<mat-radio-button value="SP">S Pass</mat-radio-button>
+	  			</div>
+    </div>
+	</mat-radio-group>
+    <div *ngIf="showVisaErrorMsg">Visa status is <strong>required</strong></div>
+
+<br><br><br><br>
+<strong>About Yourself</strong>
+<hr>
+	<mat-form-field class="full-width">
+      <textarea matInput #profile placeholder="Profile" [formControl]="profileFormControl" rows="3" cols="35" maxlength="100"></textarea>
+      <mat-hint align="end">{{profile.value.length}} / 100</mat-hint>
+      <mat-hint align="start">Seperate profile with comma ,</mat-hint>
+      <mat-error *ngIf="profileFormControl.hasError('required')">
+        Profile is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+      <textarea matInput placeholder="Skills" #skills [formControl]="skillsFormControl" rows="3" cols="35" maxlength="100"></textarea>
+      <mat-hint align="end">{{skills.value.length}} / 100</mat-hint>
+      <mat-error *ngIf="skillsFormControl.hasError('required')">
+        Skills is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+<br><br><br><br>
+<strong>Employment Details</strong>
+<hr>
+<div class="employment-container">
+<div class="employment-first">
+    	<mat-form-field class="full-width">
+	    <input matInput placeholder="Years of Experience" [formControl]="yearsOfExpFormControl">
+	    <mat-error *ngIf="yearsOfExpFormControl.hasError('required')">
+	      Years of Experience is <strong>required</strong>
+	    </mat-error>
+  		</mat-form-field>
+</div>
+<div class="employment-second">
+	    <mat-form-field class="full-width">
+	    <input matInput placeholder="Current Employer" [formControl]="currentEmpFormControl">
+	    <mat-error *ngIf="currentEmpFormControl.hasError('required')">
+	      Current Employer is <strong>required</strong>
+	    </mat-error>
+  	</mat-form-field>
+</div>
+<div class="employment-third">
+  	<mat-form-field class="full-width">
+	    <input matInput placeholder="Expected Salary (SGD$)" [formControl]="expectedSalaryFormControl">
+	    <mat-error *ngIf="expectedSalaryFormControl.hasError('required')">
+	      Expected salary is <strong>required</strong>
+	    </mat-error>
+  	</mat-form-field>
+</div>
+<div class="employment-fourth">
+	    <mat-form-field class="full-width">
+	    <input matInput placeholder="Current Salary (SGD$)" [formControl]="currentSalaryFormControl">
+	    <mat-error *ngIf="currentSalaryFormControl.hasError('required')">
+	      Current salary is <strong>required</strong>
+	    </mat-error>
+  	</mat-form-field>
+</div>
+</div>
+  	<mat-form-field class="full-width">
+	    <input matInput placeholder="Notice Period - Month(s)" [formControl]="noticePeriodFormControl">
+	    <mat-error *ngIf="noticePeriodFormControl.hasError('required')">
+	      Notice period is <strong>required</strong>
+	    </mat-error>
+  	</mat-form-field>
+
   <!-- <mat-form-field class="full-width">
     <input matInput placeholder="Date Of Birth" [formControl]="dobFormControl">
     <mat-error *ngIf="dobFormControl.hasError('required')">
@@ -85,14 +209,7 @@
     </mat-error>
   </mat-form-field> -->
 
-  <mat-form-field class="full-width">
-	  <input matInput [matDatepicker]="picker" placeholder="Date of birth" [formControl]="dobFormControl">
-	  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-	  <mat-datepicker #picker></mat-datepicker>
-	  <mat-error *ngIf="dobFormControl.hasError('required')">
-	      Date of birth is <strong>required</strong>
-	  </mat-error>
-</mat-form-field>
+  
 
   <!-- <table class="example-full-width" cellspacing="0"><tr>
     <td><mat-form-field class="example-full-width">
@@ -106,4 +223,9 @@
       <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
     </mat-form-field></td>
   </tr></table> -->
+<br><br>
+<div class="button-container">
+  <button mat-button class="submit-btn">SUBMIT</button>
+ </div>
 </form>
+</div>

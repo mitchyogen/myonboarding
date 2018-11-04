@@ -46,6 +46,56 @@ export class OnboardingViewComponent implements OnInit {
     Validators.required,
   ]);
 
+  nationalityFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  contactFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+  ]);
+
+  visaStatusFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  profileFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  skillsFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  yearsOfExpFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+  ]);
+
+  currentEmpFormControl = new FormControl('', [
+    Validators.required,
+  ]);
+
+  expectedSalaryFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+  ]);
+
+  currentSalaryFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+  ]);
+
+  noticePeriodFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+  ]);
+
+  numbersOnlyFormControl = new FormControl('', [
+    Validators.required,
+    Validators.pattern(/^-?(0|[1-9]\d*)?$/)
+  ]);
+
   matcher = new MyErrorStateMatcher();
 
   constructor() { }

@@ -1,15 +1,139 @@
-.gfi-form {
-  min-width: 150px;
-  max-width: 500px;
-  margin: 0 auto;
-  width: 100%;
-}
+.form-wrapper{
+ 	margin: 20px;
+ 	width: 100%;
+ 	box-sizing: border-box;
+	.gfi-header {
+		color: orange;
+		margin: 0 auto;
+		text-align: center;
+		font-size: 2em;
+	}
+	.gfi-form {
+	  max-width: 500px;
+	  margin: 20px auto;
+	  width: 70%;
+	  box-sizing: border-box;
+	  .personal-info-container{
+		  .first-name {
+				width: 50%;
+				display: inline-block;
+			}
+			.last-name {
+				width: 50%;
+				display: inline-block;
+			}
+		}
+	  
+	    .radio-container {
+			position: relative;
+			width: 100%;
+			display: inline-block;
+			.radio-button-container {
+				padding: 25px;
+			    border: 1px solid #cbacba; 
+			    display: inline-block;
+			    width: 35%;
+			    margin: 5px;
+			    box-shadow: 2px 2px #cccccc;
+				}
+		}
+		.employment-container {
+			width: 100%;
+			display: inline-block;
+			position: relative;
+			.employment-first {
+				width: 50%;
+				display: inline-block;
+			}
+			.employment-second {
+				width: 50%;
+				display: inline-block;
+			}
+			.employment-third {
+				width: 50%;
+				display: inline-block;
+			}
+			.employment-fourth {
+				width: 50%;
+				display: inline-block;
+			}
+		}
+		.salary-container {
+			width: 100%;
+			display: block;
+		}
+		.button-container {
+			text-align: center;
+			.submit-btn{
+				margin: 0 auto;
+				width: 100%;
+				background-color: orange;
+				text-align: center;
+			}
+		}
+	}
 
-table.full-width {
-  	width: 100%;
-}
+	table.full-width {
+	  	width: 100%;
+	}
 
-.full-width{
-	width: 100%;
+	.full-width{
+		width: 100%;
+	}
+}
+	
+
+	
+
+@media only screen and (max-width: 600px) {
+	.form-wrapper{
+		margin: 40px;
+		display: inline;
+		.gfi-header {
+			color: orange;
+			margin: 0 auto;
+			text-align: center;
+			font-size: 1em;
+		}
+		.gfi-form {
+			max-width: 200px;
+			.personal-info-container {
+				.first-name {
+					width: 100%;
+					display: inline-block;
+				}
+				.last-name {
+					width: 100%;
+					display: inline-block;
+				}
+			}
+			.radio-container{
+				width: 80%;
+				.radio-button-container {
+					position: relative;
+					width: 90%;
+				}
+				.radio-button-container:hover{
+					background-color: rgba(150,100,10, 0.2);
+				}
+			}
+			.employment-container {
+				width: 100%;
+				.employment-first {
+					width: 100%;
+				}
+				.employment-second {
+				width: 100%;
+				}
+				.employment-third {
+					width: 100%;
+				}
+				.employment-fourth {
+					width: 100%;
+				}
+			}
+		}
+	}
+
 }
 
